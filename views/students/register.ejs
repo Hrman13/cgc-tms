@@ -1,0 +1,45 @@
+<%# Student Registration EJS View %>
+<div class="page-header">
+  <h2>Register Student</h2>
+  <p>Add a new student to the transport management system</p>
+</div>
+
+<div class="form-card">
+  <% if (success) { %>
+  <div class="alert alert-success show"><%= success %></div>
+  <% } %>
+  <% if (error) { %>
+  <div class="alert alert-danger show"><%= error %></div>
+  <% } %>
+
+  <form action="/register" method="POST">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="name" class="form-control" placeholder="e.g. Arjun Sharma" value="<%= formData.name || '' %>" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" name="email" class="form-control" placeholder="student@cgc.edu.in" value="<%= formData.email || '' %>" required />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Set password" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Course / Program</label>
+        <input type="text" name="course" class="form-control" placeholder="e.g. B.Tech CSE" value="<%= formData.course || '' %>" required />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Bus Number</label>
+      <input type="text" name="bus_no" class="form-control" placeholder="e.g. CGC-07" value="<%= formData.bus_no || '' %>" required />
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Register Student</button>
+      <a href="/students" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>

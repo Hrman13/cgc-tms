@@ -1,0 +1,81 @@
+<%# EJS Login View %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+<body>
+<div id="login-page" class="active">
+  <!-- Left: Form -->
+  <div class="login-left">
+    <div class="login-brand">
+      <div class="login-brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+      </div>
+      <h1>CGC University</h1>
+      <p>Transport Management System</p>
+    </div>
+
+    <div class="role-tabs" id="role-tabs">
+      <button class="role-tab active" data-role="student" onclick="setRole('student')">Student</button>
+      <button class="role-tab" data-role="driver" onclick="setRole('driver')">Driver</button>
+      <button class="role-tab" data-role="admin" onclick="setRole('admin')">Admin</button>
+    </div>
+
+    <% if (error) { %>
+    <div class="login-error show">
+      <i class="bi bi-exclamation-circle"></i> <%= error %>
+    </div>
+    <% } %>
+
+    <form action="/login" method="POST" style="width:100%">
+      <input type="hidden" name="role" id="hidden-role" value="student" />
+
+      <div class="form-group">
+        <label class="form-label" id="id-label">Student ID</label>
+        <input type="text" name="login_id" class="form-control" id="login-id" placeholder="Enter Student ID" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <div class="input-wrapper">
+          <input type="password" name="password" class="form-control" id="login-password" placeholder="Enter password" required />
+          <button type="button" class="toggle-password" onclick="togglePassword()">
+            <i class="bi bi-eye" id="eye-icon" style="font-size:1.05rem;"></i>
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-login">
+        <i class="bi bi-box-arrow-in-right"></i> Sign In
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>CGC University &mdash; Sector 112, Mohali, Punjab</p>
+    </div>
+  </div>
+
+  <!-- Right: Branding -->
+  <div class="login-right">
+    <div class="login-right-bg"></div>
+    <div class="login-right-overlay"></div>
+    <div class="login-right-content">
+      <img src="https://play-lh.googleusercontent.com/pVcO-60nIyasQY55JQjkTO7Rk2exkPq1FEc0bw0AKJfaT6u2W6foh3TVOPuK1J1vcicfBxK6PU-CBXpY7oW1NQ" alt="CGC Logo" class="cgc-logo" onerror="this.style.display='none'" />
+      <h2>Welcome to CGC University</h2>
+      <p>A premier institution committed to excellence in education, research, and innovation.</p>
+      <div class="login-right-badge">
+        <span>Transport Management System</span>
+        Manage bus routes, student enrollments, and driver assignments.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

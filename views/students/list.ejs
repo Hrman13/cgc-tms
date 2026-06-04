@@ -1,0 +1,36 @@
+<%# Student List EJS View %>
+<div class="page-header page-header-row">
+  <div>
+    <h2>Student List</h2>
+    <p>All registered students in the transport system</p>
+  </div>
+  <a href="/register" class="btn btn-primary">Add Student</a>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h3>All Students</h3>
+    <span class="table-meta"><%= students.length %> record<%= students.length !== 1 ? 's' : '' %></span>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Student</th><th>Course</th><th>Bus No.</th><th>Email</th></tr>
+      </thead>
+      <tbody>
+        <% students.forEach((s, i) => { %>
+        <tr>
+          <td><span class="badge badge-navy">STU-<%= String(s.id).padStart(3,'0') %></span></td>
+          <td class="td-name"><%= s.name %></td>
+          <td><%= s.course %></td>
+          <td><span class="badge badge-maroon"><%= s.bus_no %></span></td>
+          <td style="font-size:0.83rem;color:var(--gray-500);"><%= s.email %></td>
+        </tr>
+        <% }) %>
+        <% if (!students.length) { %>
+        <tr><td colspan="5"><div class="empty-state" style="padding:40px 0;"><p>No students registered yet.</p></div></td></tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>

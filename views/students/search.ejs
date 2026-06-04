@@ -1,0 +1,41 @@
+<%# Student Search EJS View %>
+<div class="page-header">
+  <h2>Search Students</h2>
+  <p>Find students by name or bus number</p>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <form action="/search" method="GET" style="display:flex;gap:8px;flex:1;max-width:420px;">
+      <div class="search-bar" style="flex:1;max-width:none;">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" name="q" placeholder="Search by name or bus number..." value="<%= query %>" />
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <span class="table-meta"><%= results.length %> result<%= results.length !== 1 ? 's' : '' %></span>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Student</th><th>Course</th><th>Bus No.</th><th>Email</th></tr>
+      </thead>
+      <tbody>
+        <% results.forEach((s, i) => { %>
+        <tr>
+          <td><span class="badge badge-navy">STU-<%= String(s.id).padStart(3,'0') %></span></td>
+          <td class="td-name"><%= s.name %></td>
+          <td><%= s.course %></td>
+          <td><span class="badge badge-maroon"><%= s.bus_no %></span></td>
+          <td style="font-size:0.83rem;"><%= s.email %></td>
+        </tr>
+        <% }) %>
+        <% if (!results.length && query) { %>
+        <tr><td colspan="5"><div class="empty-state" style="padding:40px 0;"><p>No students found matching "<%= query %>".</p></div></td></tr>
+        <% } else if (!results.length) { %>
+        <tr><td colspan="5"><div class="empty-state" style="padding:40px 0;"><p>Enter a search term above to find students.</p></div></td></tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>

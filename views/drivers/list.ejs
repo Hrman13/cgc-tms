@@ -1,0 +1,35 @@
+<%# Driver List EJS View %>
+<div class="page-header page-header-row">
+  <div>
+    <h2>Driver List</h2>
+    <p>All registered drivers in the transport system</p>
+  </div>
+  <a href="/driver-register" class="btn btn-primary">Add Driver</a>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h3>All Drivers</h3>
+    <span class="table-meta"><%= drivers.length %> record<%= drivers.length !== 1 ? 's' : '' %></span>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Driver</th><th>Phone</th><th>License No.</th></tr>
+      </thead>
+      <tbody>
+        <% drivers.forEach((d, i) => { %>
+        <tr>
+          <td><span class="badge badge-navy">DRV-<%= String(d.id).padStart(3,'0') %></span></td>
+          <td class="td-name"><%= d.name %></td>
+          <td><%= d.phone %></td>
+          <td><span class="badge badge-success"><%= d.license_no %></span></td>
+        </tr>
+        <% }) %>
+        <% if (!drivers.length) { %>
+        <tr><td colspan="4"><div class="empty-state" style="padding:40px 0;"><p>No drivers registered yet.</p></div></td></tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
