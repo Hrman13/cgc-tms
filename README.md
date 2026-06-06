@@ -1,6 +1,6 @@
-# CGC Transport Management System(Academic Project)
+## Transport Management System
 
-A web-based Transport Management System developed for CGC University.
+A web-based Transport Management System developed for University.
 
 ## Features
 - Student Login
