@@ -564,6 +564,8 @@ document.getElementById('s-change-pw-form').addEventListener('submit', function(
 function initDriverDashboard() {
   const drv = DB.drivers.find(d => d.id === currentUser.recordId);
   if (!drv) return;
+  const hint = document.getElementById('d-pw-username-hint');
+  if (hint) hint.value = drv.login_id;
   document.getElementById('driver-sidebar-name').textContent = drv.name;
   document.getElementById('driver-sidebar-id').textContent   = 'ID: ' + drv.login_id;
   document.getElementById('driver-avatar').textContent        = getInitials(drv.name);
