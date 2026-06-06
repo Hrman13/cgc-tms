@@ -4,19 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CGC University Transport Management System</title>
-  <meta name="description" content="CGC University Transport Management System - Manage student transport with ease." />
+  <meta name="description" content="CGC University Transport Management System" />
   <link rel="stylesheet" href="public/css/style.css" />
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
 <body>
 
-<!-- ========================================================
+<!-- =====================================================================
      LOGIN PAGE
-     ======================================================== -->
+     ===================================================================== -->
 <div id="login-page" class="active">
-
-  <!-- LEFT: Login Form -->
   <div class="login-left">
     <div class="login-brand">
       <div class="login-brand-icon">
@@ -25,75 +22,42 @@
       <h1>CGC University</h1>
       <p>Transport Management System</p>
     </div>
-
-    <!-- Role Tabs -->
     <div class="role-tabs" role="tablist">
       <button class="role-tab active" onclick="setRole('student')" data-role="student">Student</button>
       <button class="role-tab" onclick="setRole('driver')" data-role="driver">Driver</button>
       <button class="role-tab" onclick="setRole('admin')" data-role="admin">Admin</button>
     </div>
-
-    <!-- Error Message -->
     <div class="login-error" id="login-error">
       <i class="bi bi-exclamation-circle"></i>
       <span id="login-error-text">Invalid credentials. Please try again.</span>
     </div>
-
-    <!-- Login Form -->
     <form id="login-form" autocomplete="off" style="width:100%">
       <div class="form-group">
         <label class="form-label" id="id-label">Student ID</label>
-        <input
-          type="text"
-          class="form-control"
-          id="login-id"
-          placeholder="Enter Student ID"
-          required
-          autocomplete="username"
-        />
+        <input type="text" class="form-control" id="login-id" placeholder="Enter Student ID" required autocomplete="username" />
       </div>
-
       <div class="form-group">
         <label class="form-label">Password</label>
         <div class="input-wrapper">
-          <input
-            type="password"
-            class="form-control"
-            id="login-password"
-            placeholder="Enter password"
-            required
-            autocomplete="current-password"
-          />
+          <input type="password" class="form-control" id="login-password" placeholder="Enter password" required autocomplete="current-password" />
           <button type="button" class="toggle-password" onclick="togglePassword()" title="Show/Hide Password">
             <i class="bi bi-eye" id="eye-icon" style="font-size:1.05rem;"></i>
           </button>
         </div>
       </div>
-
       <button type="submit" class="btn-login">
-        <i class="bi bi-box-arrow-in-right"></i>
-        &nbsp; Sign In
+        <i class="bi bi-box-arrow-in-right"></i>&nbsp; Sign In
       </button>
     </form>
-
-    <div class="login-footer">
-      <p>CGC University &mdash; Sector 112, Mohali, Punjab</p>
-    </div>
+    <div class="login-footer"><p>CGC University &mdash; Sector 112, Mohali, Punjab</p></div>
   </div>
-
-  <!-- RIGHT: Background / Branding -->
   <div class="login-right">
     <div class="login-right-bg"></div>
     <div class="login-right-overlay"></div>
     <div class="login-right-content">
-      <img
-        src="https://play-lh.googleusercontent.com/pVcO-60nIyasQY55JQjkTO7Rk2exkPq1FEc0bw0AKJfaT6u2W6foh3TVOPuK1J1vcicfBxK6PU-CBXpY7oW1NQ"
-        alt="CGC University Logo"
-        class="cgc-logo"
-        onerror="this.style.display='none'"
-      />
+      <img src="https://play-lh.googleusercontent.com/pVcO-60nIyasQY55JQjkTO7Rk2exkPq1FEc0bw0AKJfaT6u2W6foh3TVOPuK1J1vcicfBxK6PU-CBXpY7oW1NQ" alt="CGC University Logo" class="cgc-logo" onerror="this.style.display='none'" />
       <h2>Welcome to CGC University</h2>
-      <p>A premier institution committed to excellence in education, research, and innovation. Join thousands of students on the path to success.</p>
+      <p>A premier institution committed to excellence in education, research, and innovation.</p>
       <div class="login-right-badge">
         <span>Transport Management System</span>
         Efficiently manage bus routes, student enrollments, and driver assignments.
@@ -103,267 +67,212 @@
 </div>
 
 
-<!-- ========================================================
-     STUDENT DASHBOARD
-     ======================================================== -->
+<!-- =====================================================================
+     STUDENT PAGE
+     ===================================================================== -->
 <div id="student-page" class="page">
   <div class="app-layout">
-    <!-- Sidebar -->
-    <aside class="sidebar" id="student-sidebar">
+    <aside class="sidebar sidebar-student" id="student-sidebar">
       <div class="sidebar-header">
         <div class="sidebar-brand">
-          <div class="sidebar-brand-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-          </div>
-          <div class="sidebar-brand-text">
-            <h2>CGC University</h2>
-            <span>Transport Portal</span>
-          </div>
+          <div class="sidebar-brand-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
+          <div class="sidebar-brand-text"><h2>CGC University</h2><span>Student Portal</span></div>
         </div>
       </div>
-
       <div class="sidebar-user">
         <div style="display:flex;align-items:center;gap:10px;">
           <div class="sidebar-user-avatar" id="student-avatar">S</div>
           <div class="sidebar-user-info">
             <h4 id="student-sidebar-name">Student</h4>
-            <span>Student</span>
+            <span id="student-sidebar-id">ID: ---</span>
           </div>
         </div>
       </div>
-
       <nav class="sidebar-nav">
-        <div class="nav-section-label">Navigation</div>
+        <div class="nav-section-label">My Transport</div>
         <button class="nav-item active" onclick="showPanel('student','s-dashboard')">
           <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-          Dashboard
+          My Dashboard
         </button>
-        <button class="nav-item" onclick="showPanel('student','s-register')">
-          <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-          Register Student
+        <div class="nav-section-label">Information</div>
+        <button class="nav-item" onclick="showPanel('student','s-routes')">
+          <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+          All Bus Routes
         </button>
-        <button class="nav-item" onclick="showPanel('student','s-list')">
-          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-          Student List
+        <button class="nav-item" onclick="showPanel('student','s-help')">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          Help &amp; Coordination
         </button>
-        <button class="nav-item" onclick="showPanel('student','s-search')">
-          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-          Search Students
+        <div class="nav-section-label">Account</div>
+        <button class="nav-item" onclick="showPanel('student','s-password')">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+          Change Password
         </button>
       </nav>
-
       <div class="sidebar-footer">
         <button class="btn-logout" onclick="logout()">
-          <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
           Sign Out
         </button>
       </div>
     </aside>
-
-    <!-- Sidebar Overlay (mobile) -->
     <div class="sidebar-overlay" id="student-overlay" onclick="closeSidebar('student')"></div>
-
-    <!-- Main Content -->
     <div class="main-content">
-      <header class="topbar">
+      <header class="topbar topbar-student">
         <div style="display:flex;align-items:center;gap:12px;">
-          <button class="sidebar-toggle" onclick="openSidebar('student')">
-            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-          </button>
-          <span class="topbar-title" id="student-page-title">Student Dashboard</span>
+          <button class="sidebar-toggle" onclick="openSidebar('student')"><svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
+          <span class="topbar-title" id="student-page-title">My Dashboard</span>
         </div>
         <div class="topbar-right">
-          <span class="topbar-badge">Student Portal</span>
+          <span class="topbar-badge badge-student-role">Student Portal</span>
         </div>
       </header>
-
       <main class="content-area">
 
-        <!-- === DASHBOARD === -->
+        <!-- MY DASHBOARD -->
         <section class="panel active" id="panel-s-dashboard">
-          <div class="welcome-banner">
+          <div class="welcome-banner banner-student">
             <div class="welcome-text">
               <h2 id="student-welcome-name">Welcome, Student</h2>
-              <p>CGC University Transport Management Portal &mdash; Student Module</p>
+              <p id="student-welcome-sub">Your personal transport information</p>
             </div>
-            <div class="welcome-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+            <div class="welcome-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
+          </div>
+
+          <!-- Student Profile -->
+          <div class="section-title-row">
+            <h3 class="section-title">My Profile</h3>
+          </div>
+          <div class="info-card-grid" id="s-profile-grid">
+            <div class="info-card"><label>Full Name</label><span id="sp-name">---</span></div>
+            <div class="info-card"><label>Student ID</label><span id="sp-id">---</span></div>
+            <div class="info-card"><label>Course / Department</label><span id="sp-course">---</span></div>
+            <div class="info-card"><label>Semester</label><span id="sp-semester">---</span></div>
+            <div class="info-card"><label>Email</label><span id="sp-email">---</span></div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <!-- Bus & Route Details -->
+          <div class="section-title-row">
+            <h3 class="section-title">Assigned Bus &amp; Route</h3>
+          </div>
+          <div class="info-card-grid" id="s-bus-grid">
+            <div class="info-card info-card-highlight"><label>Bus Number</label><span id="sp-bus">---</span></div>
+            <div class="info-card info-card-highlight"><label>Route Name</label><span id="sp-route">---</span></div>
+            <div class="info-card"><label>Pickup Point</label><span id="sp-pickup">---</span></div>
+            <div class="info-card"><label>Pickup Time</label><span id="sp-pickup-time">---</span></div>
+            <div class="info-card"><label>Drop Point</label><span id="sp-drop">CGC University, Sector 112</span></div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <!-- Driver Details -->
+          <div class="section-title-row">
+            <h3 class="section-title">Assigned Driver</h3>
+          </div>
+          <div class="driver-contact-card" id="s-driver-card">
+            <div class="driver-contact-avatar" id="s-driver-avatar">D</div>
+            <div class="driver-contact-info">
+              <div class="driver-contact-name" id="s-driver-name">---</div>
+              <div class="driver-contact-meta">
+                <span><i class="bi bi-person-badge"></i> <span id="s-driver-id">---</span></span>
+                <span><i class="bi bi-telephone"></i> <span id="s-driver-phone">---</span></span>
+              </div>
+            </div>
+            <div class="driver-contact-badge">Driver</div>
+          </div>
+
+          <!-- No assignment notice -->
+          <div id="s-no-assignment" class="notice-card" style="display:none;">
+            <i class="bi bi-info-circle"></i>
+            No transport assignment found. Please contact the Transport In-charge to get a bus assigned.
+          </div>
+        </section>
+
+        <!-- ALL BUS ROUTES -->
+        <section class="panel" id="panel-s-routes">
+          <div class="page-header">
+            <h2>All Bus Routes</h2>
+            <p>Browse all college buses &mdash; find alternatives if you miss your assigned bus</p>
+          </div>
+          <div id="s-routes-list"></div>
+        </section>
+
+        <!-- HELP & COORDINATION -->
+        <section class="panel" id="panel-s-help">
+          <div class="page-header">
+            <h2>Help &amp; Coordination</h2>
+            <p>Post queries, report delays, or coordinate with other students</p>
+          </div>
+          <!-- Transport In-charge Card -->
+          <div class="contact-incharge-card">
+            <div class="contact-incharge-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+            <div class="contact-incharge-info">
+              <div class="contact-incharge-title">Transport In-charge</div>
+              <div class="contact-incharge-name">Mr. Sukhwinder Gill</div>
+              <div class="contact-incharge-meta">
+                <span><i class="bi bi-person-badge"></i> EMP-TRN-001</span>
+                <span><i class="bi bi-geo-alt"></i> Room 104, Admin Block</span>
+                <span><i class="bi bi-telephone"></i> +91 98140 00001</span>
+                <span><i class="bi bi-envelope"></i> transport@cgc.edu.in</span>
+              </div>
             </div>
           </div>
 
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-icon navy">
-                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          <!-- Community Board -->
+          <div class="section-title-row" style="margin-top:28px;">
+            <h3 class="section-title">Community Board</h3>
+            <span style="font-size:0.78rem;color:var(--gray-400);">Visible to all students</span>
+          </div>
+          <div class="chat-compose card" style="margin-bottom:16px;">
+            <div class="card-body" style="padding:16px;">
+              <div class="form-group" style="margin-bottom:10px;">
+                <textarea class="form-control" id="chat-message-input" rows="2" placeholder="Post a message about bus delays, pickup changes, or coordination..." style="resize:none;"></textarea>
               </div>
-              <div class="stat-info">
-                <div class="stat-number" id="dash-student-total">0</div>
-                <div class="stat-label">Total Students</div>
-                <div class="stat-change neutral">Registered</div>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon maroon">
-                <svg viewBox="0 0 24 24"><path d="M4 16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8H4v8zm2-6h12v6H6v-6zM15 5l-1-1H10L9 5H6v2h12V5h-3z"/></svg>
-              </div>
-              <div class="stat-info">
-                <div class="stat-number" id="dash-bus-total">0</div>
-                <div class="stat-label">Active Bus Routes</div>
-                <div class="stat-change up">Active</div>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon success">
-                <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-              </div>
-              <div class="stat-info">
-                <div class="stat-number" id="dash-driver-total">0</div>
-                <div class="stat-label">Assigned Drivers</div>
-                <div class="stat-change up">Available</div>
+              <div style="display:flex;justify-content:flex-end;">
+                <button class="btn btn-primary btn-sm" onclick="postChatMessage()">
+                  <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                  Post Message
+                </button>
               </div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-header">
-              <h3>Recently Registered Students</h3>
-              <button class="btn btn-primary btn-sm" onclick="showPanel('student','s-list')">
-                <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                View All
-              </button>
-            </div>
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Course</th>
-                    <th>Bus No.</th>
-                    <th>Email</th>
-                  </tr>
-                </thead>
-                <tbody id="recent-students-tbody">
-                  <tr><td colspan="5"><div class="empty-state" style="padding:30px 0;"><p>No students registered yet.</p></div></td></tr>
-                </tbody>
-              </table>
+          <div id="chat-board" class="chat-board">
+            <div class="empty-state" style="padding:40px 0;">
+              <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+              <p>No messages yet. Be the first to post.</p>
             </div>
           </div>
         </section>
 
-        <!-- === REGISTER STUDENT === -->
-        <section class="panel" id="panel-s-register">
+        <!-- CHANGE PASSWORD -->
+        <section class="panel" id="panel-s-password">
           <div class="page-header">
-            <h2>Register Student</h2>
-            <p>Add a new student to the transport management system</p>
+            <h2>Change Password</h2>
+            <p>Update your account password</p>
           </div>
           <div class="form-card">
-            <div class="alert alert-success" id="reg-success">Student registered successfully.</div>
-            <div class="alert alert-danger" id="reg-error">All fields are required.</div>
-
-            <form id="student-reg-form" autocomplete="off">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">Full Name</label>
-                  <input type="text" class="form-control" id="s-reg-name" placeholder="e.g. Arjun Sharma" />
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Email Address</label>
-                  <input type="email" class="form-control" id="s-reg-email" placeholder="student@cgc.edu.in" />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">Password</label>
-                  <input type="password" class="form-control" id="s-reg-password" placeholder="Set password" />
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Course / Program</label>
-                  <input type="text" class="form-control" id="s-reg-course" placeholder="e.g. B.Tech CSE" />
-                </div>
+            <div class="alert alert-success" id="s-pw-success">Password changed successfully.</div>
+            <div class="alert alert-danger" id="s-pw-error">Error message here.</div>
+            <form id="s-change-pw-form" autocomplete="off">
+              <div class="form-group">
+                <label class="form-label">Current Password</label>
+                <input type="password" class="form-control" id="s-pw-current" placeholder="Enter current password" autocomplete="current-password" />
               </div>
               <div class="form-group">
-                <label class="form-label">Bus Number</label>
-                <input type="text" class="form-control" id="s-reg-bus" placeholder="e.g. CGC-07" />
+                <label class="form-label">New Password</label>
+                <input type="password" class="form-control" id="s-pw-new" placeholder="Enter new password" autocomplete="new-password" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Confirm New Password</label>
+                <input type="password" class="form-control" id="s-pw-confirm" placeholder="Re-enter new password" autocomplete="new-password" />
               </div>
               <div class="form-actions">
-                <button type="submit" class="btn btn-primary">
-                  <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                  Register Student
-                </button>
-                <button type="button" class="btn btn-secondary" onclick="resetStudentForm()">Reset</button>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('s-change-pw-form').reset()">Cancel</button>
               </div>
             </form>
-          </div>
-        </section>
-
-        <!-- === STUDENT LIST === -->
-        <section class="panel" id="panel-s-list">
-          <div class="page-header page-header-row">
-            <div>
-              <h2>Student List</h2>
-              <p>All registered students in the transport system</p>
-            </div>
-            <button class="btn btn-primary" onclick="showPanel('student','s-register')">
-              <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-              Add Student
-            </button>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <h3>All Students</h3>
-              <span class="table-meta" id="student-count-label">0 records</span>
-            </div>
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Student</th>
-                    <th>Course</th>
-                    <th>Bus No.</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="student-list-tbody">
-                  <tr><td colspan="6"><div class="empty-state" style="padding:40px 0;"><p>No students registered yet.</p></div></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        <!-- === SEARCH STUDENTS === -->
-        <section class="panel" id="panel-s-search">
-          <div class="page-header">
-            <h2>Search Students</h2>
-            <p>Find students by name or bus number</p>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <div class="search-bar">
-                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                <input type="text" id="search-input" placeholder="Search by name or bus number..." oninput="searchStudents()" />
-              </div>
-              <span class="table-meta" id="search-count-label">Type to search</span>
-            </div>
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Student</th>
-                    <th>Course</th>
-                    <th>Bus No.</th>
-                    <th>Email</th>
-                  </tr>
-                </thead>
-                <tbody id="search-tbody">
-                  <tr><td colspan="5"><div class="empty-state" style="padding:40px 0;"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><p>Enter a search term to find students</p></div></td></tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </section>
 
@@ -373,50 +282,47 @@
 </div>
 
 
-<!-- ========================================================
-     DRIVER DASHBOARD
-     ======================================================== -->
+<!-- =====================================================================
+     DRIVER PAGE
+     ===================================================================== -->
 <div id="driver-page" class="page">
   <div class="app-layout">
-    <aside class="sidebar" id="driver-sidebar">
+    <aside class="sidebar sidebar-driver" id="driver-sidebar">
       <div class="sidebar-header">
         <div class="sidebar-brand">
-          <div class="sidebar-brand-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-          </div>
-          <div class="sidebar-brand-text">
-            <h2>CGC University</h2>
-            <span>Transport Portal</span>
-          </div>
+          <div class="sidebar-brand-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
+          <div class="sidebar-brand-text"><h2>CGC University</h2><span>Driver Portal</span></div>
         </div>
       </div>
-
       <div class="sidebar-user">
         <div style="display:flex;align-items:center;gap:10px;">
-          <div class="sidebar-user-avatar" id="driver-avatar">D</div>
+          <div class="sidebar-user-avatar driver-av" id="driver-avatar">D</div>
           <div class="sidebar-user-info">
             <h4 id="driver-sidebar-name">Driver</h4>
-            <span>Driver</span>
+            <span id="driver-sidebar-id">ID: ---</span>
           </div>
         </div>
       </div>
-
       <nav class="sidebar-nav">
-        <div class="nav-section-label">Navigation</div>
+        <div class="nav-section-label">My Information</div>
         <button class="nav-item active" onclick="showPanel('driver','d-dashboard')">
           <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-          Dashboard
+          My Dashboard
         </button>
-        <button class="nav-item" onclick="showPanel('driver','d-register')">
-          <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-          Register Driver
+        <button class="nav-item" onclick="showPanel('driver','d-passengers')">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          Passenger List
         </button>
-        <button class="nav-item" onclick="showPanel('driver','d-list')">
-          <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zm-1.5 9c-.83 0-1.5-.67-1.5-1.5S17.67 14 18.5 14s1.5.67 1.5 1.5S19.33 17 18.5 17zM17 12V9.5h2.5l1.96 2.5H17zM6 17c-.83 0-1.5-.67-1.5-1.5S5.17 14 6 14s1.5.67 1.5 1.5S6.83 17 6 17z"/></svg>
-          Driver List
+        <button class="nav-item" onclick="showPanel('driver','d-payments')">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+          Payments &amp; Salary
+        </button>
+        <div class="nav-section-label">Account</div>
+        <button class="nav-item" onclick="showPanel('driver','d-password')">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+          Change Password
         </button>
       </nav>
-
       <div class="sidebar-footer">
         <button class="btn-logout" onclick="logout()">
           <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
@@ -424,151 +330,156 @@
         </button>
       </div>
     </aside>
-
     <div class="sidebar-overlay" id="driver-overlay" onclick="closeSidebar('driver')"></div>
-
     <div class="main-content">
-      <header class="topbar">
+      <header class="topbar topbar-driver">
         <div style="display:flex;align-items:center;gap:12px;">
-          <button class="sidebar-toggle" onclick="openSidebar('driver')">
-            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-          </button>
-          <span class="topbar-title" id="driver-page-title">Driver Dashboard</span>
+          <button class="sidebar-toggle" onclick="openSidebar('driver')"><svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
+          <span class="topbar-title" id="driver-page-title">My Dashboard</span>
         </div>
         <div class="topbar-right">
-          <span class="topbar-badge">Driver Portal</span>
+          <span class="topbar-badge badge-driver-role">Driver Portal</span>
         </div>
       </header>
-
       <main class="content-area">
 
-        <!-- === DRIVER DASHBOARD === -->
+        <!-- DRIVER DASHBOARD -->
         <section class="panel active" id="panel-d-dashboard">
-          <div class="welcome-banner">
+          <div class="welcome-banner banner-driver">
             <div class="welcome-text">
               <h2 id="driver-welcome-name">Welcome, Driver</h2>
-              <p>CGC University Transport Management Portal &mdash; Driver Module</p>
+              <p>Your assigned bus and route details</p>
             </div>
-            <div class="welcome-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.96 2.5H17zm1.5 6.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-            </div>
+            <div class="welcome-icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg></div>
           </div>
 
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-icon navy">
-                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-              </div>
-              <div class="stat-info">
-                <div class="stat-number" id="d-dash-driver-count">0</div>
-                <div class="stat-label">Total Drivers</div>
-                <div class="stat-change neutral">Registered</div>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon maroon">
-                <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zm-1.5 9c-.83 0-1.5-.67-1.5-1.5S17.67 14 18.5 14s1.5.67 1.5 1.5S19.33 17 18.5 17zM17 12V9.5h2.5l1.96 2.5H17zM6 17c-.83 0-1.5-.67-1.5-1.5S5.17 14 6 14s1.5.67 1.5 1.5S6.83 17 6 17z"/></svg>
-              </div>
-              <div class="stat-info">
-                <div class="stat-number" id="d-dash-student-count">0</div>
-                <div class="stat-label">Total Students</div>
-                <div class="stat-change up">Enrolled</div>
-              </div>
-            </div>
+          <div class="section-title-row">
+            <h3 class="section-title">Driver Profile</h3>
+          </div>
+          <div class="info-card-grid">
+            <div class="info-card"><label>Full Name</label><span id="dp-name">---</span></div>
+            <div class="info-card"><label>Driver ID</label><span id="dp-id">---</span></div>
+            <div class="info-card"><label>Phone Number</label><span id="dp-phone">---</span></div>
+            <div class="info-card"><label>License Number</label><span id="dp-license">---</span></div>
+            <div class="info-card"><label>Join Date</label><span id="dp-join">---</span></div>
+            <div class="info-card info-card-highlight"><label>Assigned Bus</label><span id="dp-bus">---</span></div>
           </div>
 
+          <div class="section-divider"></div>
+
+          <div class="section-title-row">
+            <h3 class="section-title">Assigned Route</h3>
+          </div>
+          <div class="info-card-grid">
+            <div class="info-card info-card-highlight"><label>Route Name</label><span id="dp-route-name">---</span></div>
+            <div class="info-card"><label>Drop Point</label><span id="dp-drop">CGC University, Sector 112</span></div>
+          </div>
+          <div id="dp-stops-container" style="margin-top:16px;"></div>
+
+          <div class="section-divider"></div>
+
+          <div class="section-title-row">
+            <h3 class="section-title">Bus Occupancy</h3>
+          </div>
+          <div class="occupancy-bar-wrap">
+            <div class="occupancy-labels">
+              <span id="dp-occ-text">0 / 0 seats</span>
+              <span id="dp-occ-pct">0%</span>
+            </div>
+            <div class="occupancy-bar-track">
+              <div class="occupancy-bar-fill" id="dp-occ-bar" style="width:0%"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PASSENGER LIST -->
+        <section class="panel" id="panel-d-passengers">
+          <div class="page-header">
+            <h2>Passenger List</h2>
+            <p>Students assigned to your bus</p>
+          </div>
           <div class="card">
             <div class="card-header">
-              <h3>Registered Drivers</h3>
-              <button class="btn btn-primary btn-sm" onclick="showPanel('driver','d-list')">View All</button>
+              <h3 id="d-pass-bus-label">Bus ---</h3>
+              <span class="table-meta" id="d-pass-count">0 passengers</span>
             </div>
             <div class="table-wrapper">
               <table>
                 <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Driver Name</th>
-                    <th>Phone</th>
-                    <th>License No.</th>
-                  </tr>
+                  <tr><th>#</th><th>Student</th><th>Course</th><th>Pickup Point</th><th>Pickup Time</th></tr>
                 </thead>
-                <tbody id="d-recent-tbody">
-                  <tr><td colspan="4"><div class="empty-state" style="padding:30px 0;"><p>No drivers registered yet.</p></div></td></tr>
+                <tbody id="d-passenger-tbody">
+                  <tr><td colspan="5"><div class="empty-state" style="padding:36px 0;"><p>No passengers assigned.</p></div></td></tr>
                 </tbody>
               </table>
             </div>
           </div>
         </section>
 
-        <!-- === REGISTER DRIVER === -->
-        <section class="panel" id="panel-d-register">
+        <!-- PAYMENTS & SALARY -->
+        <section class="panel" id="panel-d-payments">
           <div class="page-header">
-            <h2>Register Driver</h2>
-            <p>Add a new driver to the transport management system</p>
+            <h2>Payments &amp; Salary</h2>
+            <p>Your payment history and salary records</p>
+          </div>
+          <div class="stats-grid" style="margin-bottom:24px;">
+            <div class="stat-card">
+              <div class="stat-icon navy"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg></div>
+              <div class="stat-info">
+                <div class="stat-number" id="dp-salary">---</div>
+                <div class="stat-label">Monthly Salary</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon success"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+              <div class="stat-info">
+                <div class="stat-number" id="dp-last-payment-status">---</div>
+                <div class="stat-label">Last Month Status</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Payment History</h3>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Month</th><th>Amount</th><th>Status</th><th>Date Paid</th><th>Receipt</th></tr>
+                </thead>
+                <tbody id="d-payment-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHANGE PASSWORD (DRIVER) -->
+        <section class="panel" id="panel-d-password">
+          <div class="page-header">
+            <h2>Change Password</h2>
+            <p>Update your driver account password</p>
           </div>
           <div class="form-card">
-            <div class="alert alert-success" id="d-reg-success">Driver registered successfully.</div>
-            <div class="alert alert-danger" id="d-reg-error">All fields are required.</div>
-
-            <form id="driver-reg-form" autocomplete="off">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">Full Name</label>
-                  <input type="text" class="form-control" id="d-reg-name" placeholder="e.g. Rajinder Singh" />
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Phone Number</label>
-                  <input type="tel" class="form-control" id="d-reg-phone" placeholder="e.g. +91 98765 43210" />
-                </div>
+            <div class="alert alert-success" id="d-pw-success">Password changed successfully.</div>
+            <div class="alert alert-danger" id="d-pw-error">Error message here.</div>
+            <form id="d-change-pw-form" autocomplete="off">
+              <div class="form-group">
+                <label class="form-label">Current Password</label>
+                <input type="password" class="form-control" id="d-pw-current" placeholder="Enter current password" autocomplete="current-password" />
               </div>
               <div class="form-group">
-                <label class="form-label">License Number</label>
-                <input type="text" class="form-control" id="d-reg-license" placeholder="e.g. PB-0520220123456" />
+                <label class="form-label">New Password</label>
+                <input type="password" class="form-control" id="d-pw-new" placeholder="Enter new password" autocomplete="new-password" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Confirm New Password</label>
+                <input type="password" class="form-control" id="d-pw-confirm" placeholder="Re-enter new password" autocomplete="new-password" />
               </div>
               <div class="form-actions">
-                <button type="submit" class="btn btn-primary">
-                  <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                  Register Driver
-                </button>
-                <button type="button" class="btn btn-secondary" onclick="resetDriverForm()">Reset</button>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('d-change-pw-form').reset()">Cancel</button>
               </div>
             </form>
-          </div>
-        </section>
-
-        <!-- === DRIVER LIST === -->
-        <section class="panel" id="panel-d-list">
-          <div class="page-header page-header-row">
-            <div>
-              <h2>Driver List</h2>
-              <p>All registered drivers in the transport system</p>
-            </div>
-            <button class="btn btn-primary" onclick="showPanel('driver','d-register')">
-              <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-              Add Driver
-            </button>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <h3>All Drivers</h3>
-              <span class="table-meta" id="driver-count-label">0 records</span>
-            </div>
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Driver</th>
-                    <th>Phone</th>
-                    <th>License No.</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="driver-list-tbody">
-                  <tr><td colspan="5"><div class="empty-state" style="padding:40px 0;"><p>No drivers registered yet.</p></div></td></tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </section>
 
@@ -578,57 +489,58 @@
 </div>
 
 
-<!-- ========================================================
-     ADMIN DASHBOARD
-     ======================================================== -->
+<!-- =====================================================================
+     ADMIN PAGE
+     ===================================================================== -->
 <div id="admin-page" class="page">
   <div class="app-layout">
-    <aside class="sidebar" id="admin-sidebar">
+    <aside class="sidebar sidebar-admin" id="admin-sidebar">
       <div class="sidebar-header">
         <div class="sidebar-brand">
-          <div class="sidebar-brand-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-          </div>
-          <div class="sidebar-brand-text">
-            <h2>CGC University</h2>
-            <span>Admin Portal</span>
-          </div>
+          <div class="sidebar-brand-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
+          <div class="sidebar-brand-text"><h2>CGC University</h2><span>Admin Portal</span></div>
         </div>
       </div>
-
       <div class="sidebar-user">
         <div style="display:flex;align-items:center;gap:10px;">
-          <div class="sidebar-user-avatar" style="background:linear-gradient(135deg,var(--maroon-dark),var(--maroon-light));">A</div>
-          <div class="sidebar-user-info">
-            <h4>Administrator</h4>
-            <span>Admin</span>
-          </div>
+          <div class="sidebar-user-avatar admin-av">A</div>
+          <div class="sidebar-user-info"><h4>Administrator</h4><span>Full Access</span></div>
         </div>
       </div>
-
       <nav class="sidebar-nav">
-        <div class="nav-section-label">Navigation</div>
+        <div class="nav-section-label">Overview</div>
         <button class="nav-item active" onclick="showPanel('admin','a-dashboard')">
           <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
           Dashboard
         </button>
-        <div class="nav-section-label">Students</div>
+        <div class="nav-section-label">Student Management</div>
+        <button class="nav-item" onclick="showPanel('admin','a-reg-student')">
+          <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          Register Student
+        </button>
         <button class="nav-item" onclick="showPanel('admin','a-students')">
           <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-          Manage Students
+          All Students
         </button>
-        <div class="nav-section-label">Drivers</div>
+        <div class="nav-section-label">Driver Management</div>
+        <button class="nav-item" onclick="showPanel('admin','a-reg-driver')">
+          <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          Register Driver
+        </button>
         <button class="nav-item" onclick="showPanel('admin','a-drivers')">
-          <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.96 2.5H17zm1.5 6.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-          Manage Drivers
+          <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+          All Drivers
         </button>
         <div class="nav-section-label">System</div>
+        <button class="nav-item" onclick="showPanel('admin','a-credentials')">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+          Credentials &amp; Reset
+        </button>
         <button class="nav-item" onclick="showPanel('admin','a-activity')">
           <svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.72L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5V2.05z"/></svg>
           Activity Log
         </button>
       </nav>
-
       <div class="sidebar-footer">
         <button class="btn-logout" onclick="logout()">
           <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
@@ -636,188 +548,203 @@
         </button>
       </div>
     </aside>
-
     <div class="sidebar-overlay" id="admin-overlay" onclick="closeSidebar('admin')"></div>
-
     <div class="main-content">
-      <header class="topbar">
+      <header class="topbar topbar-admin">
         <div style="display:flex;align-items:center;gap:12px;">
-          <button class="sidebar-toggle" onclick="openSidebar('admin')">
-            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-          </button>
+          <button class="sidebar-toggle" onclick="openSidebar('admin')"><svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
           <span class="topbar-title" id="admin-page-title">Admin Dashboard</span>
         </div>
         <div class="topbar-right">
-          <span class="topbar-badge" style="background:rgba(139,26,47,0.1);color:var(--maroon);border-color:rgba(139,26,47,0.2);">Admin Portal</span>
+          <span class="topbar-badge badge-admin-role">Admin Portal</span>
         </div>
       </header>
-
       <main class="content-area">
 
-        <!-- === ADMIN DASHBOARD === -->
+        <!-- ADMIN DASHBOARD -->
         <section class="panel active" id="panel-a-dashboard">
-          <div class="welcome-banner">
+          <div class="welcome-banner banner-admin">
             <div class="welcome-text">
               <h2>Admin Dashboard</h2>
-              <p>CGC University Transport Management System &mdash; Control Center</p>
+              <p>CGC University Transport Management System &mdash; Full Control</p>
             </div>
-            <div class="welcome-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-            </div>
+            <div class="welcome-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
           </div>
-
           <div class="stats-grid">
             <div class="stat-card">
-              <div class="stat-icon navy">
-                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-              </div>
-              <div class="stat-info">
-                <div class="stat-number" id="admin-student-count">0</div>
-                <div class="stat-label">Total Students</div>
-                <div class="stat-change up">Registered</div>
-              </div>
+              <div class="stat-icon navy"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+              <div class="stat-info"><div class="stat-number" id="admin-student-count">0</div><div class="stat-label">Total Students</div><div class="stat-change up">Registered</div></div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon maroon">
-                <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.96 2.5H17zm1.5 6.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-              </div>
-              <div class="stat-info">
-                <div class="stat-number" id="admin-driver-count">0</div>
-                <div class="stat-label">Total Drivers</div>
-                <div class="stat-change up">Registered</div>
-              </div>
+              <div class="stat-icon maroon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg></div>
+              <div class="stat-info"><div class="stat-number" id="admin-driver-count">0</div><div class="stat-label">Total Drivers</div><div class="stat-change up">Registered</div></div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon success">
-                <svg viewBox="0 0 24 24"><path d="M4 16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8H4v8zm2-6h12v6H6v-6zM15 5l-1-1H10L9 5H6v2h12V5h-3z"/></svg>
-              </div>
-              <div class="stat-info">
-                <div class="stat-number" id="admin-bus-count">0</div>
-                <div class="stat-label">Active Bus Routes</div>
-                <div class="stat-change neutral">Routes</div>
-              </div>
+              <div class="stat-icon success"><svg viewBox="0 0 24 24"><path d="M4 16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8H4v8z"/></svg></div>
+              <div class="stat-info"><div class="stat-number" id="admin-bus-count">0</div><div class="stat-label">Active Bus Routes</div><div class="stat-change neutral">Routes</div></div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon info">
-                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-              </div>
-              <div class="stat-info">
-                <div class="stat-number" id="admin-activity-count">0</div>
-                <div class="stat-label">Activity Logs</div>
-                <div class="stat-change neutral">Events</div>
-              </div>
+              <div class="stat-icon info"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
+              <div class="stat-info"><div class="stat-number" id="admin-activity-count">0</div><div class="stat-label">Activity Events</div><div class="stat-change neutral">Logged</div></div>
             </div>
           </div>
-
-          <!-- Students & Drivers Quick View -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="admin-tables-grid">
+          <div class="admin-tables-grid">
             <div class="card">
-              <div class="card-header">
-                <h3>Recent Students</h3>
-                <button class="btn btn-primary btn-sm" onclick="showPanel('admin','a-students')">View All</button>
-              </div>
-              <div class="table-wrapper">
-                <table>
-                  <thead>
-                    <tr><th>#</th><th>Name</th><th>Bus No.</th></tr>
-                  </thead>
-                  <tbody id="admin-recent-students">
-                    <tr><td colspan="3"><div class="empty-state" style="padding:24px 0;"><p>No data</p></div></td></tr>
-                  </tbody>
-                </table>
-              </div>
+              <div class="card-header"><h3>Recent Students</h3><button class="btn btn-primary btn-sm" onclick="showPanel('admin','a-students')">View All</button></div>
+              <div class="table-wrapper"><table><thead><tr><th>#</th><th>Name</th><th>Bus No.</th></tr></thead><tbody id="admin-recent-students"></tbody></table></div>
             </div>
             <div class="card">
-              <div class="card-header">
-                <h3>Recent Drivers</h3>
-                <button class="btn btn-primary btn-sm" onclick="showPanel('admin','a-drivers')">View All</button>
-              </div>
-              <div class="table-wrapper">
-                <table>
-                  <thead>
-                    <tr><th>#</th><th>Name</th><th>License</th></tr>
-                  </thead>
-                  <tbody id="admin-recent-drivers">
-                    <tr><td colspan="3"><div class="empty-state" style="padding:24px 0;"><p>No data</p></div></td></tr>
-                  </tbody>
-                </table>
-              </div>
+              <div class="card-header"><h3>Recent Drivers</h3><button class="btn btn-primary btn-sm" onclick="showPanel('admin','a-drivers')">View All</button></div>
+              <div class="table-wrapper"><table><thead><tr><th>#</th><th>Name</th><th>License</th></tr></thead><tbody id="admin-recent-drivers"></tbody></table></div>
             </div>
           </div>
         </section>
 
-        <!-- === ADMIN - MANAGE STUDENTS === -->
+        <!-- REGISTER STUDENT (Admin only) -->
+        <section class="panel" id="panel-a-reg-student">
+          <div class="page-header"><h2>Register Student</h2><p>Admin only &mdash; create new student account and assign transport</p></div>
+          <div class="form-card">
+            <div class="alert alert-success" id="a-sreg-success">Student registered successfully.</div>
+            <div class="alert alert-danger" id="a-sreg-error">Error message here.</div>
+            <form id="a-student-reg-form" autocomplete="off">
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-control" id="a-sreg-name" placeholder="e.g. Arjun Sharma" /></div>
+                <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-control" id="a-sreg-email" placeholder="student@cgc.edu.in" /></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">Initial Password</label><input type="text" class="form-control" id="a-sreg-password" placeholder="Set initial password" /></div>
+                <div class="form-group"><label class="form-label">Course / Program</label><input type="text" class="form-control" id="a-sreg-course" placeholder="e.g. B.Tech CSE" /></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">Semester</label>
+                  <select class="form-control" id="a-sreg-semester">
+                    <option value="">Select Semester</option>
+                    <option>1st Semester</option><option>2nd Semester</option><option>3rd Semester</option><option>4th Semester</option>
+                    <option>5th Semester</option><option>6th Semester</option><option>7th Semester</option><option>8th Semester</option>
+                  </select>
+                </div>
+                <div class="form-group"><label class="form-label">Assign Bus Number</label>
+                  <select class="form-control" id="a-sreg-bus">
+                    <option value="">Select Bus</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Register Student</button>
+                <button type="button" class="btn btn-secondary" onclick="resetAdminStudentForm()">Reset</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ALL STUDENTS (Admin) -->
         <section class="panel" id="panel-a-students">
           <div class="page-header page-header-row">
-            <div>
-              <h2>Manage Students</h2>
-              <p>View and manage all registered students</p>
-            </div>
+            <div><h2>All Students</h2><p>View and manage all registered students</p></div>
+            <button class="btn btn-primary" onclick="showPanel('admin','a-reg-student')">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:currentColor;"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg> Add Student
+            </button>
           </div>
           <div class="card">
             <div class="card-header">
               <div class="search-bar">
                 <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                <input type="text" id="admin-student-search" placeholder="Search students..." oninput="adminSearchStudents()" />
+                <input type="text" id="admin-student-search" placeholder="Search by name, course, bus..." oninput="adminSearchStudents()" />
               </div>
               <span class="table-meta" id="admin-student-count-label">0 records</span>
             </div>
             <div class="table-wrapper">
               <table>
-                <thead>
-                  <tr><th>#</th><th>Student</th><th>Course</th><th>Bus No.</th><th>Email</th><th>Action</th></tr>
-                </thead>
-                <tbody id="admin-student-tbody">
-                  <tr><td colspan="6"><div class="empty-state" style="padding:40px 0;"><p>No students found.</p></div></td></tr>
-                </tbody>
+                <thead><tr><th>#</th><th>Student</th><th>Course</th><th>Semester</th><th>Bus No.</th><th>Actions</th></tr></thead>
+                <tbody id="admin-student-tbody"></tbody>
               </table>
             </div>
           </div>
         </section>
 
-        <!-- === ADMIN - MANAGE DRIVERS === -->
+        <!-- REGISTER DRIVER (Admin only) -->
+        <section class="panel" id="panel-a-reg-driver">
+          <div class="page-header"><h2>Register Driver</h2><p>Admin only &mdash; create new driver account</p></div>
+          <div class="form-card">
+            <div class="alert alert-success" id="a-dreg-success">Driver registered successfully.</div>
+            <div class="alert alert-danger" id="a-dreg-error">Error message here.</div>
+            <form id="a-driver-reg-form" autocomplete="off">
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-control" id="a-dreg-name" placeholder="e.g. Rajinder Singh" /></div>
+                <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-control" id="a-dreg-phone" placeholder="+91 98765 43210" /></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">License Number</label><input type="text" class="form-control" id="a-dreg-license" placeholder="e.g. PB-0520220001" /></div>
+                <div class="form-group"><label class="form-label">Initial Password</label><input type="text" class="form-control" id="a-dreg-password" placeholder="Set initial password" /></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">Assign Bus Number</label>
+                  <select class="form-control" id="a-dreg-bus">
+                    <option value="">Select Bus (optional)</option>
+                  </select>
+                </div>
+                <div class="form-group"><label class="form-label">Monthly Salary (INR)</label><input type="number" class="form-control" id="a-dreg-salary" placeholder="e.g. 18000" /></div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Register Driver</button>
+                <button type="button" class="btn btn-secondary" onclick="resetAdminDriverForm()">Reset</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ALL DRIVERS (Admin) -->
         <section class="panel" id="panel-a-drivers">
           <div class="page-header page-header-row">
-            <div>
-              <h2>Manage Drivers</h2>
-              <p>View and manage all registered drivers</p>
-            </div>
+            <div><h2>All Drivers</h2><p>View and manage all registered drivers</p></div>
+            <button class="btn btn-primary" onclick="showPanel('admin','a-reg-driver')">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:currentColor;"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg> Add Driver
+            </button>
           </div>
           <div class="card">
-            <div class="card-header">
-              <h3>All Drivers</h3>
-              <span class="table-meta" id="admin-driver-count-label">0 records</span>
-            </div>
+            <div class="card-header"><h3>All Drivers</h3><span class="table-meta" id="admin-driver-count-label">0 records</span></div>
             <div class="table-wrapper">
               <table>
-                <thead>
-                  <tr><th>#</th><th>Driver</th><th>Phone</th><th>License No.</th><th>Action</th></tr>
-                </thead>
-                <tbody id="admin-driver-tbody">
-                  <tr><td colspan="5"><div class="empty-state" style="padding:40px 0;"><p>No drivers found.</p></div></td></tr>
-                </tbody>
+                <thead><tr><th>#</th><th>Driver</th><th>Phone</th><th>License No.</th><th>Bus</th><th>Actions</th></tr></thead>
+                <tbody id="admin-driver-tbody"></tbody>
               </table>
             </div>
           </div>
         </section>
 
-        <!-- === ADMIN - ACTIVITY LOG === -->
-        <section class="panel" id="panel-a-activity">
-          <div class="page-header">
-            <h2>Activity Log</h2>
-            <p>System events and recent actions</p>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <h3>Recent Events</h3>
-              <button class="btn btn-secondary btn-sm" onclick="clearLog()">Clear Log</button>
-            </div>
-            <div class="card-body" id="activity-log-body" style="padding:0;">
-              <div class="empty-state" style="padding:48px 0;">
-                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-                <p>No activity recorded yet.</p>
+        <!-- CREDENTIALS & RESET -->
+        <section class="panel" id="panel-a-credentials">
+          <div class="page-header"><h2>Credentials &amp; Password Reset</h2><p>View credential metadata and reset passwords for students and drivers</p></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="cred-grid">
+            <!-- Student Credentials -->
+            <div class="card">
+              <div class="card-header"><h3>Student Credentials</h3></div>
+              <div class="table-wrapper">
+                <table>
+                  <thead><tr><th>ID</th><th>Name</th><th>Pw Changed</th><th>Action</th></tr></thead>
+                  <tbody id="cred-student-tbody"></tbody>
+                </table>
               </div>
             </div>
+            <!-- Driver Credentials -->
+            <div class="card">
+              <div class="card-header"><h3>Driver Credentials</h3></div>
+              <div class="table-wrapper">
+                <table>
+                  <thead><tr><th>ID</th><th>Name</th><th>Pw Changed</th><th>Action</th></tr></thead>
+                  <tbody id="cred-driver-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ACTIVITY LOG -->
+        <section class="panel" id="panel-a-activity">
+          <div class="page-header"><h2>Activity Log</h2><p>System events and audit trail</p></div>
+          <div class="card">
+            <div class="card-header"><h3>Recent Events</h3><button class="btn btn-secondary btn-sm" onclick="clearLog()">Clear Log</button></div>
+            <div class="card-body" id="activity-log-body" style="padding:0;"></div>
           </div>
         </section>
 
@@ -826,10 +753,29 @@
   </div>
 </div>
 
-<!-- ========================================================
-     SCRIPTS
-     ======================================================== -->
-<script src="public/js/app.js"></script>
+<!-- Password Reset Modal -->
+<div id="reset-modal" class="modal-overlay" style="display:none;" onclick="closeResetModal(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 id="reset-modal-title">Reset Password</h3>
+      <button class="modal-close" onclick="closeResetModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p id="reset-modal-subtitle" style="font-size:0.85rem;color:var(--gray-500);margin-bottom:16px;"></p>
+      <div class="alert alert-success" id="reset-success">Password reset successfully.</div>
+      <div class="alert alert-danger" id="reset-error">Error resetting password.</div>
+      <div class="form-group">
+        <label class="form-label">New Password</label>
+        <input type="text" class="form-control" id="reset-new-pw" placeholder="Enter new password" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" onclick="confirmReset()">Reset Password</button>
+      <button class="btn btn-secondary" onclick="closeResetModal()">Cancel</button>
+    </div>
+  </div>
+</div>
 
+<script src="public/js/app.js"></script>
 </body>
 </html>
