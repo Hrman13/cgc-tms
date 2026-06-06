@@ -383,7 +383,10 @@ function closeSidebar(role) {
 function initStudentDashboard() {
   const stu = DB.students.find(s => s.id === currentUser.recordId);
   if (!stu) return;
+  const hint = document.getElementById('s-pw-username-hint');
+  if (hint) hint.value = stu.login_id;
   document.getElementById('student-sidebar-name').textContent = stu.name;
+  document.getElementById('student-sidebar-id').textContent   = 'ID: ' + stu.login_id;
   document.getElementById('student-sidebar-id').textContent   = 'ID: ' + stu.login_id;
   document.getElementById('student-avatar').textContent        = getInitials(stu.name);
   document.getElementById('student-welcome-name').textContent  = 'Welcome, ' + stu.name.split(' ')[0];
