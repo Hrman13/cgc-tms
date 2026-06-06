@@ -24,4 +24,4 @@ A web-based Transport Management System developed for CGC University.
 Currently under development. New features and improvements are being added.
 
 ## Disclaimer
-This is an academic project created for learning and demonstration purposes only. It is not an official CGC University application.
+This is an academic project created for learning and demonstration purposes only. It is not an official University application.
